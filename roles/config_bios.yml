@@ -1,0 +1,22 @@
+# Configure system BIOS
+- name: Configure system BIOS
+  hosts: gr_c0_02
+  become_method: runas
+
+  tasks:
+  - name: Copy the BIOS configuration package onto the client in C:\temp\install\bios
+    ansible.windows.win_copy:
+      src: /home/david/ansible/resources/bios/Precision_3660_init_v2_x64.exe
+      dest: C:\temp\install\bios\
+
+#  - name: Copy the BIOS wol configuration package onto the client in C:\temp\install\bios
+#    ansible.windows.win_copy:
+#      src: /home/david/ansible/resources/bios/Precision_3660_wol_p_x64.exe
+#      dest: C:\temp\install\bios\
+
+  - name: Run the BIOS configuration package
+    win_shell: C:\temp\install\bios\Precision_3660_init_v2_x64.exe
+    args:
+      executable: cmd.exe
+    become: yes
+    become_user: ladmin

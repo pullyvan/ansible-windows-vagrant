@@ -1,0 +1,14 @@
+[all]
+
+[all:children]
+webservers
+
+[webservers]
+windowsClient01 ansible_host=192.168.83.20
+
+[all:vars]
+ansible_connection=winrm
+ansible_port=5985
+ansible_user=vagrant
+ansible_password=vagrant
+ansible_winrm_server_cert_validation=ignore

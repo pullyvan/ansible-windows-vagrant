@@ -1,0 +1,18 @@
+# Update system BIOS
+- name: Update system BIOS
+  hosts: gr_c0_02
+  become_method: runas
+
+  tasks:
+  - name: Copy the BIOS installer onto the client in C:\temp\install\bios
+    ansible.windows.win_copy:
+      src: /home/david/ansible/resources/bios/Precision_3660_1.4.0.exe
+      dest: C:\temp\install\bios\
+ 
+  - name: Run the BIOS installer
+    win_shell: C:\temp\install\bios\Precision_3660_1.4.0.exe /s /r /l="C:\temp\install\bios\bios_update.log" /p=ssie2022
+#    win_shell: C:\temp\install\bios\Precision_3660_1.4.0.exe /s /r /l="C:\temp\install\bios\bios_update.log"
+    args:
+      executable: cmd.exe
+    become: yes
+    become_user: ladmin

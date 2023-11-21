@@ -1,0 +1,11 @@
+---
+# tasks file for ansible_windows10
+- name: Configure system BIOS
+  hosts: all
+
+  tasks:
+    - name: deploying software for Windows
+      include_role:
+        name: roles/software
+
+
