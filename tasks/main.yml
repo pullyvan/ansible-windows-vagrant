@@ -1,6 +1,6 @@
 ---
 # tasks file for ansible_windows10
-- name: Configure system BIOS
+- name: Setup software deployement
   hosts: all
 
   tasks:
