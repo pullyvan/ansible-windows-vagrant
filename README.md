@@ -1,7 +1,6 @@
-Role Name
+Role
 =========
-
-A small example of an ansible playbook to work with Windows 10
+Ansible playbook used to install software by using chocolatey for this example we install 7-zip
 
 Requirements
 ------------
